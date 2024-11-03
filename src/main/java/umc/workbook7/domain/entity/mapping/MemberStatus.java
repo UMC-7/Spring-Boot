@@ -1,4 +1,4 @@
 package umc.workbook7.domain.entity.mapping;
 
-public class MemberAgree {
+public enum MemberStatus {
 }

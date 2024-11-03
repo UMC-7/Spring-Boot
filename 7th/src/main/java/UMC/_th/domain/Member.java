@@ -8,6 +8,7 @@ import UMC._th.domain.mapping.Home;
 import UMC._th.domain.mapping.MemberPrefer;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,7 @@ public class Member extends BaseEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 20)
     private String name;
 
     @Enumerated(EnumType.STRING)
@@ -31,9 +33,11 @@ public class Member extends BaseEntity {
     private String address;
 
     @Enumerated(EnumType.STRING)
+    @ColumnDefault("AGREE")
     private Agreement agreement;
 
     @Enumerated(EnumType.STRING)
+    @ColumnDefault("ACTIVE")
     private MemberStatus status;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)

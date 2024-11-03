@@ -16,8 +16,10 @@ public class Mission {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private Integer point;
 
+    @Column(nullable = false)
     private String condition;
 
     @ManyToOne(fetch = FetchType.LAZY)

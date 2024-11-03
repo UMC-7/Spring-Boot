@@ -1,23 +1,25 @@
 package UMC._th.domain;
 
-import UMC._th.domain.mapping.MemberPrefer;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class FoodPrefer {
+public class Region {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String category;
+    private String name;
 
-    @OneToMany(mappedBy = "foodPrefer", cascade = CascadeType.ALL)
-    private ArrayList<MemberPrefer> prefers = new ArrayList<>();
+    private String location;
+
+    @OneToMany(mappedBy = "region", cascade = CascadeType.ALL)
+    private List<Store> storeList = new ArrayList<>();
 }

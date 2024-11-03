@@ -4,8 +4,12 @@ import UMC._th.domain.common.BaseEntity;
 import UMC._th.domain.enums.Agreement;
 import UMC._th.domain.enums.Gender;
 import UMC._th.domain.enums.MemberStatus;
+import UMC._th.domain.mapping.Home;
+import UMC._th.domain.mapping.MemberPrefer;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
 
 @Entity
 @Getter
@@ -31,4 +35,13 @@ public class Member extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private MemberStatus status;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private ArrayList<Home> homes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private ArrayList<MemberPrefer> prefers = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private ArrayList<Review> reviews = new ArrayList<>();
 }

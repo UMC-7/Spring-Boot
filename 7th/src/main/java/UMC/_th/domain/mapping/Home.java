@@ -27,6 +27,6 @@ public class Home extends BaseEntity {
     private Mission mission;
 
     @Enumerated(EnumType.STRING)
-    @ColumnDefault("INCOMPLETE")
+    @ColumnDefault("'INCOMPLETE'")
     private MissionStatus status;
 }

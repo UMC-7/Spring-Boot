@@ -20,7 +20,7 @@ public class Mission {
     private Integer point;
 
     @Column(nullable = false)
-    private String condition;
+    private String cond;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")

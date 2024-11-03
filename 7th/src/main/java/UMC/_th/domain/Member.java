@@ -33,11 +33,11 @@ public class Member extends BaseEntity {
     private String address;
 
     @Enumerated(EnumType.STRING)
-    @ColumnDefault("AGREE")
+    @ColumnDefault("'AGREE'")
     private Agreement agreement;
 
     @Enumerated(EnumType.STRING)
-    @ColumnDefault("ACTIVE")
+    @ColumnDefault("'ACTIVE'")
     private MemberStatus status;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)

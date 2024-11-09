@@ -9,4 +9,10 @@ public class TempConverter {
                 .testString("This is Test!")
                 .build(); // build() 메서드는 설정된 값을 바탕으로 최종 TempTestDTO 객체를 생성하여 반환
     }
+
+    public static TempResponse.TempExceptionDTO toTempExceptionDTO(Integer flag){
+        return TempResponse.TempExceptionDTO.builder()
+                .flag(flag)
+                .build();
+    }
 }

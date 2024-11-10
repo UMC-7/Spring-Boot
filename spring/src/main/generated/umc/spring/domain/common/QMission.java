@@ -8,7 +8,6 @@ import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
 import com.querydsl.core.types.dsl.PathInits;
-import umc.spring.domain.Mission;
 
 
 /**
@@ -37,8 +36,6 @@ public class QMission extends EntityPathBase<Mission> {
     public final StringPath missionCertificationNumber = createString("missionCertificationNumber");
 
     public final StringPath missionName = createString("missionName");
-
-    public final EnumPath<umc.spring.domain.enums.MissionStatus> status = createEnum("status", umc.spring.domain.enums.MissionStatus.class);
 
     public final QStore store;
 

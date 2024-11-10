@@ -1,6 +1,6 @@
 package umc.spring.service.StoreService;
 
-import umc.spring.domain.Store;
+import umc.spring.domain.common.Store;
 
 import java.util.List;
 import java.util.Optional;

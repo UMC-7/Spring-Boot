@@ -1,8 +1,6 @@
-package umc.spring.domain;
+package umc.spring.domain.common;
 
 import jakarta.persistence.*;
-import umc.spring.domain.common.BaseEntity;
-import umc.spring.domain.enums.MissionStatus;
 import umc.spring.domain.mapping.MemberMission;
 
 import java.util.ArrayList;

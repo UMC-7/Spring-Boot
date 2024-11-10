@@ -1,32 +1,33 @@
-package umc.spring.domain;
+package umc.spring.domain.common;
 
 import jakarta.persistence.*;
 import lombok.*;
-import umc.spring.domain.common.BaseEntity;
-import umc.spring.domain.enums.QuestionState;
 
 @Entity
 @Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Question extends BaseEntity {
+public class Rating extends BaseEntity {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 50)
-    private String title;
-
-    private QuestionState state;
+    @Column(nullable = false)
+    private Integer rate;
 
     @Column(length = 200)
-    private String content;
+    private String ratingContent;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Store store;
+    private Mission mission;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
+
+    @JoinColumn(name = "store_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Store store;
 }

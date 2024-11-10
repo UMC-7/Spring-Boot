@@ -1,7 +1,7 @@
 package umc.spring.repository.missionRepository;
 
-import umc.spring.domain.Member;
-import umc.spring.domain.Mission;
+import umc.spring.domain.common.Member;
+import umc.spring.domain.common.Mission;
 import umc.spring.domain.mapping.MemberMission;
 
 import java.util.List;

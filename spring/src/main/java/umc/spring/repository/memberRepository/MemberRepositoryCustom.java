@@ -1,6 +1,6 @@
 package umc.spring.repository.memberRepository;
 
-import umc.spring.domain.Member;
+import umc.spring.domain.common.Member;
 
 public interface MemberRepositoryCustom {
 

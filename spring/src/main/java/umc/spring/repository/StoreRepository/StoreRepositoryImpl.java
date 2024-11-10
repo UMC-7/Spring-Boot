@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import umc.spring.domain.common.QStore;
-import umc.spring.domain.Store;
+import umc.spring.domain.common.Store;
 
 import java.util.List;
 

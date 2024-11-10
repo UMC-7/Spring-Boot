@@ -2,8 +2,8 @@ package umc.spring.domain.mapping;
 
 import jakarta.persistence.*;
 import lombok.*;
-import umc.spring.domain.FoodCategory;
-import umc.spring.domain.Member;
+import umc.spring.domain.common.FoodCategory;
+import umc.spring.domain.common.Member;
 
 @Entity
 @Getter

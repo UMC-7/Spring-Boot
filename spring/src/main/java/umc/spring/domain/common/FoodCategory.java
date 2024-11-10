@@ -1,22 +1,20 @@
-package umc.spring.domain;
+package umc.spring.domain.common;
 
 import jakarta.persistence.*;
 import lombok.*;
+import umc.spring.domain.common.BaseEntity;
 
 @Entity
 @Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class StoreFoodCategory {
+public class FoodCategory extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 50)
-    private String foodCateforyName;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Store storeId;
+    @Column(length = 100)
+    private String foodTypeName;
 }

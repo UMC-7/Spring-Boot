@@ -7,7 +7,9 @@ import java.util.List;
 
 public interface MissionRepositoryCustom {
 
-    List<Mission> findMissionByMemberAndFinishPaging(Member member, Long cursor);
+    List<Mission> findMissionByMemberAndCompletePaging(Member member, Long cursor);
+
+    List<Mission> findMissionByMemberAndTryingPaging(Member member, Long cursor);
 
     List<Mission> findMissionByMemberAndComplete(Member member);
 

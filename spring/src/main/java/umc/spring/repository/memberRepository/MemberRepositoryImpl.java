@@ -9,7 +9,7 @@ import umc.spring.domain.common.QMember;
 
 @Repository
 @RequiredArgsConstructor
-public class MemberRepositoryCustionImpl implements MemberRepositoryCustion {
+public class MemberRepositoryImpl implements MemberRepositoryCustom {
 
     private final JPAQueryFactory jpaQueryFactory;
     private final QMember member = QMember.member;

@@ -8,7 +8,7 @@ import umc.spring.domain.common.Rating;
 
 @Repository
 @RequiredArgsConstructor
-public class RatingRepositoryImpl implements RatingRepository {
+public class RatingRepositoryImpl implements RatingRepositoryCustom {
 
     private final JPAQueryFactory jpaQueryFactory;
     private final QRating rating = QRating.rating;

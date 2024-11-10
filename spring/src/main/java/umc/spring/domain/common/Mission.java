@@ -1,6 +1,7 @@
 package umc.spring.domain.common;
 
 import jakarta.persistence.*;
+import umc.spring.domain.enums.MissionStatus;
 import umc.spring.domain.mapping.MemberMission;
 
 import java.time.LocalDateTime;
@@ -18,7 +19,8 @@ public class Mission extends BaseEntity {
     private String missionName;
 
     @Column(length = 10)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private MissionStatus status;
 
     @Column(length = 10)
     private String missionCertificationNumber;

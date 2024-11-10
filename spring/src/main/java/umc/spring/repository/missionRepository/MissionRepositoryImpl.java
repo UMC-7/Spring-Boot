@@ -31,7 +31,7 @@ public class MissionRepositoryImpl implements MissionRepositoryCustom {
                 .join(memberMission.mission, mission)
                 .where(
                         memberMission.member.id.eq(id)
-                                .and(mission.status.eq(String.valueOf(MissionStatus.COMPLETE)))
+                                .and(mission.status.eq(MissionStatus.COMPLETE))
                                 .and(
                                         Expressions.stringTemplate(
                                                 "CONCAT(LPAD({0}, 10, '0'), LPAD({1}, 10, '0'))",
@@ -56,7 +56,7 @@ public class MissionRepositoryImpl implements MissionRepositoryCustom {
                 .join(memberMission.mission, mission)
                 .where(
                         memberMission.member.id.eq(id)
-                                .and(mission.status.eq(String.valueOf(MissionStatus.TRYING)))
+                                .and(mission.status.eq(MissionStatus.TRYING))
                                 .and(
                                         Expressions.stringTemplate(
                                                 "CONCAT(LPAD({0}, 10, '0'), LPAD({1}, 10, '0'))",
@@ -81,7 +81,7 @@ public class MissionRepositoryImpl implements MissionRepositoryCustom {
                 .join(memberMission.mission, mission)
                 .where(
                         memberMission.member.id.eq(id)
-                                .and(mission.status.eq(String.valueOf(MissionStatus.COMPLETE)))
+                                .and(mission.status.eq(MissionStatus.COMPLETE))
                 )
                 .orderBy(mission.createdAt.desc(), mission.id.desc())
                 .limit(15)
@@ -100,10 +100,34 @@ public class MissionRepositoryImpl implements MissionRepositoryCustom {
                 .join(memberMission.mission, mission)
                 .where(
                         memberMission.member.id.eq(id)
-                                .and(mission.status.eq(String.valueOf(MissionStatus.TRYING)))
+                                .and(mission.status.eq(MissionStatus.TRYING))
                 )
                 .orderBy(mission.createdAt.desc(), mission.id.desc())
                 .limit(15)
                 .fetch();
+    }
+
+    @Override
+    public List<Mission> findMissionByLocationAndPossible(Member member, String location, Long cursor) {
+
+        Long id = member.getId();
+
+
+        return jpaQueryFactory
+                .select(memberMission.mission)
+                .from(memberMission)
+                .where(
+                        memberMission.member.id.eq(id)
+                                .and(memberMission.mission.store.location.eq(location))
+                                .and(memberMission.mission.status.eq(MissionStatus.TRYING))
+                                .and(
+                                        Expressions.stringTemplate(
+                                                "CONCAT(LPAD({0}, 10, '0'), LPAD({1}, 10, '0'))",
+                                                mission.createdAt,
+                                                mission.id
+                                        ).lt(String.valueOf(cursor)))
+                )
+                .fetch();
+//        return null;
     }
 }

@@ -21,6 +21,9 @@ public class Store {
     @Column(length = 20, nullable = false)
     private String storeName;
 
+    @Column(length = 10)
+    private String location;
+
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
     private List<Mission> missionList = new ArrayList<>();
 

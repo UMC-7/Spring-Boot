@@ -20,9 +20,11 @@ public class QStore extends EntityPathBase<Store> {
 
     public static final QStore store = new QStore("store");
 
-    public final NumberPath<Integer> avgRating = createNumber("avgRating", Integer.class);
+    public final NumberPath<Float> avgRating = createNumber("avgRating", Float.class);
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
+
+    public final StringPath location = createString("location");
 
     public final ListPath<Mission, QMission> missionList = this.<Mission, QMission>createList("missionList", Mission.class, QMission.class, PathInits.DIRECT2);
 

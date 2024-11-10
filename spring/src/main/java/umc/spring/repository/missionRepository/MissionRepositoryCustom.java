@@ -15,4 +15,5 @@ public interface MissionRepositoryCustom {
 
     List<Mission> findMissionByMemberAndTrying(Member member);
 
+    List<Mission> findMissionByLocationAndPossible(Member member, )
 }

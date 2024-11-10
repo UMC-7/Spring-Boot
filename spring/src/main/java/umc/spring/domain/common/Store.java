@@ -34,6 +34,7 @@ public class Store {
     private String storeType;
 
     @Column(length = 10)
+    @Enumerated(EnumType.STRING)
     private String operationState;
 
     private LocalTime operationTime;

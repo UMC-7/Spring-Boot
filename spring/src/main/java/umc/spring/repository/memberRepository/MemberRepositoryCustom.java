@@ -5,4 +5,6 @@ import umc.spring.domain.common.Member;
 public interface MemberRepositoryCustom {
 
     Member findMemberById(Long id);
+
+
 }

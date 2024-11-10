@@ -1,11 +1,10 @@
 package umc.spring.domain.mapping;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
 import jakarta.persistence.*;
 import lombok.*;
 import umc.spring.domain.common.BaseEntity;
-import umc.spring.domain.common.Member;
-import umc.spring.domain.common.Terms;
+import umc.spring.domain.Member;
+import umc.spring.domain.Terms;
 
 @Entity
 @Getter

@@ -1,10 +1,8 @@
-package umc.spring.domain.common;
+package umc.spring.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-
-import java.time.LocalDateTime;
+import umc.spring.domain.common.BaseEntity;
 
 @Entity
 @Getter

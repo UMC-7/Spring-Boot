@@ -8,6 +8,9 @@ import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
 import com.querydsl.core.types.dsl.PathInits;
+import umc.spring.domain.Mission;
+import umc.spring.domain.Question;
+import umc.spring.domain.Store;
 
 
 /**

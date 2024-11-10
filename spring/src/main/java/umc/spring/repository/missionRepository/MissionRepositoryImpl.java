@@ -4,10 +4,11 @@ import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import umc.spring.domain.common.Member;
-import umc.spring.domain.common.Mission;
+import umc.spring.domain.Member;
+import umc.spring.domain.Mission;
 import umc.spring.domain.common.QMission;
 import umc.spring.domain.enums.MissionStatus;
+import umc.spring.domain.mapping.MemberMission;
 import umc.spring.domain.mapping.QMemberMission;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class MissionRepositoryImpl implements MissionRepositoryCustom {
                 .join(memberMission.mission, mission)
                 .where(
                         memberMission.member.id.eq(id)
-                                .and(mission.status.eq(MissionStatus.COMPLETE))
+                                .and(memberMission.status.eq(MissionStatus.COMPLETE))
                                 .and(
                                         Expressions.stringTemplate(
                                                 "CONCAT(LPAD({0}, 10, '0'), LPAD({1}, 10, '0'))",
@@ -56,7 +57,7 @@ public class MissionRepositoryImpl implements MissionRepositoryCustom {
                 .join(memberMission.mission, mission)
                 .where(
                         memberMission.member.id.eq(id)
-                                .and(mission.status.eq(MissionStatus.TRYING))
+                                .and(memberMission.status.eq(MissionStatus.TRYING))
                                 .and(
                                         Expressions.stringTemplate(
                                                 "CONCAT(LPAD({0}, 10, '0'), LPAD({1}, 10, '0'))",
@@ -81,7 +82,7 @@ public class MissionRepositoryImpl implements MissionRepositoryCustom {
                 .join(memberMission.mission, mission)
                 .where(
                         memberMission.member.id.eq(id)
-                                .and(mission.status.eq(MissionStatus.COMPLETE))
+                                .and(memberMission.status.eq(MissionStatus.COMPLETE))
                 )
                 .orderBy(mission.createdAt.desc(), mission.id.desc())
                 .limit(15)
@@ -100,13 +101,14 @@ public class MissionRepositoryImpl implements MissionRepositoryCustom {
                 .join(memberMission.mission, mission)
                 .where(
                         memberMission.member.id.eq(id)
-                                .and(mission.status.eq(MissionStatus.TRYING))
+                                .and(memberMission.status.eq(MissionStatus.TRYING))
                 )
                 .orderBy(mission.createdAt.desc(), mission.id.desc())
                 .limit(15)
                 .fetch();
     }
 
+    //홈 화면의 리스트
     @Override
     public List<Mission> findMissionByLocationAndPossible(Member member, String location, Long cursor) {
 
@@ -119,7 +121,7 @@ public class MissionRepositoryImpl implements MissionRepositoryCustom {
                 .where(
                         memberMission.member.id.eq(id)
                                 .and(memberMission.mission.store.location.eq(location))
-                                .and(memberMission.mission.status.eq(MissionStatus.TRYING))
+                                .and(memberMission.status.eq(MissionStatus.TRYING))
                                 .and(
                                         Expressions.stringTemplate(
                                                 "CONCAT(LPAD({0}, 10, '0'), LPAD({1}, 10, '0'))",
@@ -129,5 +131,19 @@ public class MissionRepositoryImpl implements MissionRepositoryCustom {
                 )
                 .fetch();
 //        return null;
+    }
+
+    //홈화면 원형 데이터
+    @Override
+    public List<MemberMission> findMissionByMemberAndLocation(Member member, String location) {
+
+        Long id = member.getId();
+
+        return jpaQueryFactory
+                .select(memberMission)
+                .from(memberMission)
+                .where(memberMission.member.id.eq(id)
+                        .and(memberMission.mission.store.location.eq(location)))
+                .fetch();
     }
 }

@@ -4,7 +4,7 @@ import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.stereotype.Repository;
 import lombok.RequiredArgsConstructor;
-import umc.spring.domain.common.Member;
+import umc.spring.domain.Member;
 import umc.spring.domain.common.QMember;
 
 @Repository

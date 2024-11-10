@@ -1,7 +1,8 @@
-package umc.spring.domain.common;
+package umc.spring.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import umc.spring.domain.common.BaseEntity;
 import umc.spring.domain.enums.QuestionState;
 
 @Entity

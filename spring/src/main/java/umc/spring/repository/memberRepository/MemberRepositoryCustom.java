@@ -4,7 +4,8 @@ import umc.spring.domain.common.Member;
 
 public interface MemberRepositoryCustom {
 
-    Member findMemberById(Long id);
+    //맴버 조회
+    ember findMemberById(Long id);
 
 
 }

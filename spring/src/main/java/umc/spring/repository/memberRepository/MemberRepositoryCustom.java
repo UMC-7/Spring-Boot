@@ -4,8 +4,7 @@ import umc.spring.domain.common.Member;
 
 public interface MemberRepositoryCustom {
 
-    //맴버 추가
+    //맴버 조회
     Member findMemberById(Long id);
-
 
 }

@@ -1,17 +1,17 @@
-package umc.spring.web.dto;
+package umc.spring.apiPayload.code;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-public class TempResponse {
+public class TempResponseDTO {
 
     @Builder
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class TempTestDTO{
+    public static class TempTestDTO {
         String testString;
     }
 

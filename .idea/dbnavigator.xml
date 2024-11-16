@@ -12,7 +12,7 @@
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
-    <show-object-properties value="true" />
+    <show-object-properties value="false" />
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
@@ -29,8 +29,20 @@
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="112cdaf5-1a95-4ebb-b25f-ba1dc9915a87" />
   </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="112cdaf5-1a95-4ebb-b25f-ba1dc9915a87" dataset="study.member" active-filter-id="" />
+    <filter-actions connection-id="112cdaf5-1a95-4ebb-b25f-ba1dc9915a87" dataset="study.member_food" active-filter-id="" />
+  </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
+  </component>
+  <component name="DBNavigator.Project.MethodExecutionManager">
+    <method-browser />
+    <execution-history>
+      <group-entries value="true" />
+      <execution-inputs />
+    </execution-history>
+    <argument-values-cache />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
@@ -40,7 +52,7 @@
     <connections>
       <connection id="112cdaf5-1a95-4ebb-b25f-ba1dc9915a87" active="true" signed="true">
         <database>
-          <name value="Connection" />
+          <name value="umc_study" />
           <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />

@@ -12,6 +12,7 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -46,7 +47,7 @@ public class Member extends BaseEntity {
     private ArrayList<Home> homes = new ArrayList<>();
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-    private ArrayList<MemberPrefer> prefers = new ArrayList<>();
+    private List<MemberPrefer> prefers = new ArrayList<>();
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private ArrayList<Review> reviews = new ArrayList<>();

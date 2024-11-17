@@ -17,7 +17,8 @@ public enum ErrorStatus implements BaseErrorCode {
     _FORBIDDEN(HttpStatus.FORBIDDEN, "COMMON403", "금지된 요청입니다."),
 
     //for test
-    TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "EXCEPTION TEST");
+    TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "EXCEPTION TEST"),
+    FOOD_CATEGORY_NOT_FOUND(HttpStatus.BAD_REQUEST, "FOOD4001", "FOOD_CATEGORY NOT FOUND");
 
     private final HttpStatus httpStatus;
     private final String code;

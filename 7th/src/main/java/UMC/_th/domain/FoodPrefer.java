@@ -19,6 +19,6 @@ public class FoodPrefer {
     @Column(nullable = false, unique = true)
     private String category;
 
-    @OneToMany(mappedBy = "foodPrefer", cascade = CascadeType.ALL)
-    private ArrayList<MemberPrefer> prefers = new ArrayList<>();
+    //@OneToMany(mappedBy = "foodPrefer", cascade = CascadeType.ALL)
+    //private ArrayList<MemberPrefer> prefers = new ArrayList<>();
 }

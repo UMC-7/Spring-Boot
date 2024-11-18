@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.springdoc:springdoc-openapi-hateoas:1.6.9">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springdoc/springdoc-openapi-hateoas/1.6.9/c7bbdc81cf90895226675cbe742ff72428a96c3c/springdoc-openapi-hateoas-1.6.9.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springdoc/springdoc-openapi-hateoas/1.6.9/93c7734eeedbe8157dfec0e1bc844369b9a5a379/springdoc-openapi-hateoas-1.6.9-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

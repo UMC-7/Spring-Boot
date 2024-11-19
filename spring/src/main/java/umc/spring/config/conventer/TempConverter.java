@@ -1,4 +1,4 @@
-package umc.spring.conventer;
+package umc.spring.config.conventer;
 
 import umc.spring.web.dto.TempResponse;
 

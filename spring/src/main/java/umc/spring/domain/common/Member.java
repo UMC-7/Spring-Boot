@@ -18,7 +18,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Member {
+public class Member extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,8 +33,7 @@ public class Member {
     @Column(nullable = false, length = 40)
     private String specAddress;
 
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+    private Integer gender;
 
     @Enumerated(EnumType.STRING)
     private SocialType socialType;

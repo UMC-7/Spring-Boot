@@ -6,11 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import umc.spring.apiPayload.ApiResponse;
-import umc.spring.conventer.TempConverter;
+import umc.spring.config.conventer.TempConverter;
 import umc.spring.service.TempService.TempQueryService;
 import umc.spring.web.dto.TempResponse;
-
-import java.time.temporal.TemporalAccessor;
 
 @RestController
 @RequestMapping("/temp")

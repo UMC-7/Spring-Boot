@@ -33,7 +33,8 @@ public class Member extends BaseEntity{
     @Column(nullable = false, length = 40)
     private String specAddress;
 
-    private Integer gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     @Enumerated(EnumType.STRING)
     private SocialType socialType;

@@ -20,13 +20,18 @@ public class QMember extends EntityPathBase<Member> {
 
     public static final QMember member = new QMember("member1");
 
+    public final QBaseEntity _super = new QBaseEntity(this);
+
     public final StringPath address = createString("address");
 
     public final ListPath<Alarm, QAlarm> alarmList = this.<Alarm, QAlarm>createList("alarmList", Alarm.class, QAlarm.class, PathInits.DIRECT2);
 
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> createdAt = _super.createdAt;
+
     public final StringPath email = createString("email");
 
-    public final EnumPath<umc.spring.domain.enums.Gender> gender = createEnum("gender", umc.spring.domain.enums.Gender.class);
+    public final NumberPath<Integer> gender = createNumber("gender", Integer.class);
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
@@ -51,6 +56,9 @@ public class QMember extends EntityPathBase<Member> {
     public final StringPath specAddress = createString("specAddress");
 
     public final EnumPath<umc.spring.domain.enums.MemberStatus> status = createEnum("status", umc.spring.domain.enums.MemberStatus.class);
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> updatedAt = _super.updatedAt;
 
     public QMember(String variable) {
         super(Member.class, forVariable(variable));

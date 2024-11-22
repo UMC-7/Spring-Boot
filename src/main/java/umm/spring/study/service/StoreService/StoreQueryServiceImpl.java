@@ -1,3 +1,5 @@
+// DB에서 쿼리스트링 사용해서 데이터 찾을 때 사용
+
 package umm.spring.study.service.StoreService;
 
 import lombok.RequiredArgsConstructor;

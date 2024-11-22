@@ -1,3 +1,6 @@
+// DTO와 엔티티 객체 간 변환을 담당
+// 즉, DTO 변수를 기반으로 객체로 만드는 메서드들의 집합
+
 package umm.spring.study.converter;
 
 import lombok.RequiredArgsConstructor;
@@ -16,6 +19,9 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 public class MemberConverter {
 
+    // Member 엔티티를 MemberResponseDTO.JoinResultDTO로 변환
+    // API 응답에 필요한 데이터만 담는 DTO로 변환하는 역할을 함
+    // 클라이언트 요청 바탕으로 데이터베이스에 저장된 것을 클라이언트에 응답으로 보내기 위한 작업
     public static MemberResponseDTO.JoinResultDTO toJoinResultDTO(Member member){
         return MemberResponseDTO.JoinResultDTO.builder()
                 .memberId(member.getId())
@@ -23,6 +29,8 @@ public class MemberConverter {
                 .build();
     }
 
+    // 클라이언트 요청시 MemberCommandServiceImpl의 joinMember() 에서 여기를 호출
+    // 클라이언트에서 전달받은 JoinDTO 요청 데이터를 기반으로 새로운 Member 엔티티 생성
     public static Member toMember(MemberRequestDTO.JoinDto request){
 
         Gender gender = null;

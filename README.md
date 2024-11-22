@@ -1,2 +1,3 @@
-# Spring-Boot
-${team name}
+# umc_mission
+# umc_mission
+# umc_mission

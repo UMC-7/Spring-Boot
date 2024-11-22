@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring.iml" filepath="$PROJECT_DIR$/.idea/modules/spring.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring.main.iml" filepath="$PROJECT_DIR$/.idea/modules/spring.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring.querydsl.iml" filepath="$PROJECT_DIR$/.idea/modules/spring.querydsl.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring.test.iml" filepath="$PROJECT_DIR$/.idea/modules/spring.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring/src/main/main1.iml" filepath="$PROJECT_DIR$/spring/src/main/main1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring/src/test/test1.iml" filepath="$PROJECT_DIR$/spring/src/test/test1.iml" />
     </modules>
   </component>
 </project>

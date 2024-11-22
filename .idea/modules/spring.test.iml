@@ -21,7 +21,7 @@
       <configuration />
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
+  <component name="NewModuleRootManager">
     <output-test url="file://$MODULE_DIR$/../../spring/out/test/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../spring/src/test">
@@ -149,4 +149,5 @@
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.eclipse.angus:angus-activation:1.0.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.junit.platform:junit-platform-engine:1.9.1" level="project" />
   </component>
+  <component name="TestModuleProperties" production-module="spring.main" />
 </module>

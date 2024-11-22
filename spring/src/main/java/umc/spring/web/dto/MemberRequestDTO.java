@@ -16,6 +16,6 @@ public class MemberRequestDTO {
         Integer birthDay;
         String address;
         String specAddress;
-        List<String> memberPreferList;
+        List<Long> memberPreferList;  //음식 선호의 id값을 넘겨준다.
     }
 }

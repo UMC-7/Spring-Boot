@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 HELP.md
 .gradle
 build/
@@ -36,3 +37,7 @@ out/
 ### VS Code ###
 .vscode/
 *.yml
+application.yml
+=======
+*.yml
+>>>>>>> 297daf893c57c67e3602a414ba8f23f6879ede30

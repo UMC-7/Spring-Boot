@@ -33,6 +33,9 @@ public class Store {
     @Column(name = "avg_rating")
     private Float avgRating;
 
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
+    private List<Rating> ratingList = new ArrayList<>();
+
     @Column(length = 10)
     private String storeType;
 
@@ -48,5 +51,12 @@ public class Store {
                 "id=" + id +
                 ", name='" + storeName + '\'' +
                 ", score=" + avgRating;
+    }
+
+    public float setAvgRating() {
+        return (float) ratingList.stream()
+                .mapToDouble(Rating::getRate) // rate 값만 추출
+                .average()                    // 평균 계산
+                .orElse(0.0);
     }
 }

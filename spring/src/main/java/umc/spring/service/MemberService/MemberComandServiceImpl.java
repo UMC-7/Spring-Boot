@@ -15,6 +15,7 @@ import umc.spring.repository.memberRepository.MemberRepository;
 import umc.spring.web.dto.MemberRequestDTO;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,6 +25,11 @@ public class MemberComandServiceImpl implements MemberComandService{
     private final MemberRepository memberRepository;
 
     private final FoodCategoryRepository foodCategoryRepository;
+
+    @Override
+    public Optional<Member> findById(Long id) {
+        return memberRepository.findById(id);
+    }
 
     @Override
     @Transactional

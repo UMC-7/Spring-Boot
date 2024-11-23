@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import umc.spring.config.conventer.MissionConverter;
 import umc.spring.domain.common.Mission;
 import umc.spring.domain.common.Store;
+import umc.spring.service.MemberService.MemberComandService;
 import umc.spring.service.StoreService.StoreQueryService;
 import umc.spring.web.dto.MissionDTO;
 
@@ -16,7 +17,7 @@ import java.util.stream.Stream;
 @RequiredArgsConstructor
 public class MissionServiceImpl implements MissionService {
 
-    private final MissionService missionService;
+    private final MemberComandService memberComandService;
     private final StoreQueryService storeQueryService;
 
     @Override
@@ -26,6 +27,7 @@ public class MissionServiceImpl implements MissionService {
         Mission newMission = MissionConverter.toMission(request);
 
         Optional<Store> store = storeQueryService.findStore(request.getStoreId());
+
 
         Store storeValue = store.orElseThrow(() -> new IllegalArgumentException("Store 값이 없습니다."));
         newMission.setStore(storeValue);

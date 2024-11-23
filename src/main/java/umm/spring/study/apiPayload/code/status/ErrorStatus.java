@@ -5,6 +5,7 @@ import lombok.Getter;
 import org.springframework.http.HttpStatus;
 import umm.spring.study.apiPayload.code.BaseErrorCode;
 import umm.spring.study.apiPayload.code.ErrorReasonDTO;
+import umm.spring.study.domain.Store;
 
 @Getter
 @AllArgsConstructor
@@ -33,8 +34,10 @@ public enum ErrorStatus implements BaseErrorCode {
     FOOD_CATEGORY_NOT_FOUND(HttpStatus.BAD_REQUEST, "FOODCATEGORY4001", "음식 카테고리 미설정."),
 
     // 미션 아이디 관련 에러
-    MISSION_CATEGORY_NOT_FOUND(HttpStatus.BAD_REQUEST, "MISSION4001", "미션 아이디 없음.");
+    MISSION_CATEGORY_NOT_FOUND(HttpStatus.BAD_REQUEST, "MISSION4001", "미션 아이디 없음."),
 
+    // 가게 없음 에러
+    STORE_NOT_FOUND(HttpStatus.BAD_REQUEST, "STORE4001", "가게 없음.");
     private final HttpStatus httpStatus;
     private final String code;
     private final String message;

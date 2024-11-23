@@ -7,28 +7,28 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import umm.spring.study.apiPayload.code.status.ErrorStatus;
 import umm.spring.study.repository.MissionRepository.MissionRepository;
+import umm.spring.study.repository.StoreRepository.StoreRepository;
+import umm.spring.study.validation.annotation.ExistStore;
 import umm.spring.study.validation.annotation.MissionExists;
 
-import java.util.List;
 @Component
 @RequiredArgsConstructor
+public class StoreExistValidator implements ConstraintValidator<ExistStore, Long> {
 
-public class MissionExistsValidator implements ConstraintValidator<MissionExists, Long>{
-
-    private final MissionRepository missionRepository;
+    private final StoreRepository storeRepository;
 
     @Override
-    public void initialize(MissionExists constraintAnnotation){
+    public void initialize(ExistStore constraintAnnotation){
         ConstraintValidator.super.initialize(constraintAnnotation);
     }
 
     @Override
-    public boolean isValid(Long missionId, ConstraintValidatorContext context) {
-        boolean isValid = missionRepository.existsById(missionId);
+    public boolean isValid(Long storeId, ConstraintValidatorContext context) {
+        boolean isValid = storeRepository.existsById(storeId);
 
         if (!isValid){
             context.disableDefaultConstraintViolation();
-            context.buildConstraintViolationWithTemplate(ErrorStatus.MISSION_CATEGORY_NOT_FOUND.toString()).addConstraintViolation();
+            context.buildConstraintViolationWithTemplate(ErrorStatus.STORE_NOT_FOUND.toString()).addConstraintViolation();
         }
         return isValid;
     }

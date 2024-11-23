@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
+import umm.spring.study.validation.annotation.ExistStore;
 
 public class StoreRequestDTO {
 
@@ -17,6 +18,9 @@ public class StoreRequestDTO {
         String regionName;
         @NotNull
         Float storeScore;
+        @NotNull
+        @ExistStore
+        Long storeId;
 
     }
 }

@@ -81,3 +81,7 @@ sourceSets {
 compileQuerydsl {
 	options.annotationProcessorPath = configurations.querydsl
 }
+
+tasks.withType(JavaCompile) {
+	options.compilerArgs << '-parameters'
+}

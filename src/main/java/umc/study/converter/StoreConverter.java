@@ -19,7 +19,7 @@ public class StoreConverter {
         return StoreResponseDTO.AddStoreResultDTO.builder()
                 .storeId(store.getId())
                 .storeName(store.getName())
-                .regionName(store.getRegion().getName()) // Region의 이름 가져오기
+                .regionName(store.getRegion().getName())
                 .storeScore(store.getScore())
                 .build();
     }

@@ -25,21 +25,15 @@ public class StoreReviewCommandServiceImpl implements StoreReviewCommandService 
     @Transactional
     public StoreReviewResponseDTO.AddReviewResultDTO addReview(Long storeId, Long memberId, StoreReviewRequestDTO.AddReviewDTO request) {
 
-        // Store 조회
         Store store = storeRepository.findById(storeId)
                 .orElseThrow(() -> new IllegalArgumentException("Store not found with id: " + storeId));
 
-        // Member 조회
         Member member = memberRepository.findById(memberId)
                 .orElseThrow(() -> new IllegalArgumentException("Member not found with id: " + memberId));
-
-        // Review 엔티티 생성
         Review newReview = StoreReviewConverter.toReviewEntity(request, member, store);
 
-        // 저장
         Review savedReview = reviewRepository.save(newReview);
 
-        // 결과 DTO 반환
         return StoreReviewConverter.toAddReviewResultDTO(savedReview);
     }
 }

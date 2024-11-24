@@ -45,16 +45,13 @@ dependencies {
 
 	// Jackson for JSON processing
 	implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
-	implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.3'
-	implementation 'com.fasterxml.jackson.core:jackson-core:2.13.3'
 
 	// Lombok for code generation
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
-	// OpenAPI Documentation
-	implementation 'org.springdoc:springdoc-openapi-ui:1.6.9'
-	implementation 'org.springdoc:springdoc-openapi-data-rest:1.6.9'
+	// OpenAPI Documentation (Spring Boot 3.x 이상 지원)
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
 
 	// Testing
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -64,7 +61,6 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
-
 
 // QueryDSL 설정
 def generated = 'src/main/generated'
@@ -78,14 +74,6 @@ sourceSets {
 	main {
 		java {
 			srcDirs = ['src/main/java', 'src/main/generated']
-		}
-	}
-}
-
-sourceSets {
-	main {
-		java {
-			srcDirs = ['src/main/java', 'src/main/resources', generated]
 		}
 	}
 }

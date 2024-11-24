@@ -6,19 +6,22 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import umc.spring.apiPayload.code.status.ErrorStatus;
 import umc.spring.repository.foodCategoryRepository.FoodCategoryRepository;
+import umc.spring.repository.missionRepository.MissionRepository;
 import umc.spring.validation.annotation.ExistCategories;
+import umc.spring.validation.annotation.NotTryingMission;
 
 import java.util.List;
 
 
 @Component
 @RequiredArgsConstructor
-public class CategoriesExistValidator implements ConstraintValidator<ExistCategories, List<Long>> {
+public class NotTryingMissionValidator implements ConstraintValidator<NotTryingMission, List<Long>> {
 
     private final FoodCategoryRepository foodCategoryRepository;
+    private final MissionRepository missionRepository;
 
     @Override
-    public void initialize(ExistCategories constraintAnnotation) {
+    public void initialize(NotTryingMission constraintAnnotation) {
         ConstraintValidator.super.initialize(constraintAnnotation);
     }
 
@@ -35,3 +38,4 @@ public class CategoriesExistValidator implements ConstraintValidator<ExistCatego
         return isValid;
     }
 }
+

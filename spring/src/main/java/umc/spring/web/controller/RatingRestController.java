@@ -3,6 +3,7 @@ package umc.spring.web.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import umc.spring.apiPayload.ApiResponse;
@@ -21,7 +22,7 @@ public class RatingRestController {
 
     private final RatingService ratingService;
 
-
+    @PostMapping("/create")
     public ApiResponse<RatingResponseDTO.JoinResultDTO> createRating(@Valid @RequestBody RatingDTO.CreateRating request) {
         Rating rating = ratingService.createRating(request);
         return ApiResponse.onSuccess(RatingConverter.toCreateResultDTO(rating));

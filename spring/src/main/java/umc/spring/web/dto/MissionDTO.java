@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import umc.spring.domain.common.Store;
 import umc.spring.domain.mapping.MemberMission;
+import umc.spring.validation.annotation.ExistMember;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,7 @@ public class MissionDTO {
         Long missionId;
 
         @NotNull
+        @ExistMember
         Long memberId;
     }
 }

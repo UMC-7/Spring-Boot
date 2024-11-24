@@ -2,6 +2,8 @@ package umc.spring.web.dto;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
+import umc.spring.validation.annotation.ExistMember;
+import umc.spring.validation.annotation.ExistStore;
 
 public class RatingDTO {
 
@@ -17,9 +19,11 @@ public class RatingDTO {
         Long missionId;
 
         @NotNull
+        @ExistMember
         Long memberId;
 
         @NotNull
+        @ExistStore
         Long storeId;
     }
 }

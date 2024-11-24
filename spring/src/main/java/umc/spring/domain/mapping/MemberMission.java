@@ -25,4 +25,14 @@ public class MemberMission {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Mission mission;
+
+    public void setMember(Member member) {
+        this.member = member;
+        member.getMemberMissionList().add(this);
+    }
+
+    public void setMission(Mission mission) {
+        this.mission = mission;
+        mission.getMemberMisssion().add(this);
+    }
 }

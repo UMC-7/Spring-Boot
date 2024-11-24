@@ -1,6 +1,7 @@
 package umc.spring.web.dto;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import umc.spring.domain.common.Store;
 import umc.spring.domain.mapping.MemberMission;
@@ -20,5 +21,15 @@ public class MissionDTO {
         Long storeId;
 
         List<Long> memberMisssion;
+    }
+
+    @Getter
+    public static class AddTryDTO {
+
+        @NotNull
+        Long missionId;
+
+        @NotNull
+        Long memberId;
     }
 }

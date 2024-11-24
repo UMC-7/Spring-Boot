@@ -27,11 +27,17 @@ public class MemberMission {
     private Mission mission;
 
     public void setMember(Member member) {
+        if (this.member != null) {
+            member.getMemberMissionList().remove(this);
+        }
         this.member = member;
         member.getMemberMissionList().add(this);
     }
 
     public void setMission(Mission mission) {
+        if (this.mission != null) {
+            mission.getMemberMisssion().remove(this);
+        }
         this.mission = mission;
         mission.getMemberMisssion().add(this);
     }

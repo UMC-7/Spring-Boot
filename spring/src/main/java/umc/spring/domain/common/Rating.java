@@ -41,6 +41,9 @@ public class Rating extends BaseEntity {
     }
 
     public void setMember(Member member) {
+        if (this.member != null) {
+            member.getRatingList().remove(this);
+        }
         this.member = member;
         member.getRatingList().add(this);
 

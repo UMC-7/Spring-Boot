@@ -29,30 +29,8 @@ public class ReviewResponseDTO {
         String review;
     }
 
-    @Getter
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class ReviewPreviewDTO {
-        String memberName;
-        Float score;
-        String review;
-        LocalDate createdAt;
 
-    }
 
-    @Getter
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class ReviewPreviewListDTO {
-        List<ReviewPreviewDTO> reviewList;
-        Integer listSize;
-        Integer totalPage;
-        Long totalElements;
-        Boolean isFirst;
-        Boolean isLast;
 
-    }
 
 }

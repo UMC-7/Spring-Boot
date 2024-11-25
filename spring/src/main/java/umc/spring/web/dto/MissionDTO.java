@@ -15,10 +15,12 @@ public class MissionDTO {
     @Getter
     public static class AddDTO {
 
+        @NotNull
         String missionName;
 
         String missionCertificationNumber;
 
+        @NotNull
         Long storeId;
 
         List<Long> memberMisssion;

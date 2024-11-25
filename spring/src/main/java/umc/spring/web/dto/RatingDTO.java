@@ -1,5 +1,7 @@
 package umc.spring.web.dto;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import umc.spring.validation.annotation.ExistMember;
@@ -11,6 +13,8 @@ public class RatingDTO {
     public static class CreateRating {
 
         @NotNull
+        @Min(0)
+        @Max(5)
         Integer rate;
 
         String ratingContent;

@@ -24,6 +24,8 @@ public class QMember extends EntityPathBase<Member> {
 
     public final StringPath address = createString("address");
 
+    public final NumberPath<Integer> age = createNumber("age", Integer.class);
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdAt = _super.createdAt;
 
@@ -43,9 +45,13 @@ public class QMember extends EntityPathBase<Member> {
 
     public final StringPath name = createString("name");
 
+    public final StringPath password = createString("password");
+
     public final NumberPath<Integer> point = createNumber("point", Integer.class);
 
     public final ListPath<Review, QReview> reviewList = this.<Review, QReview>createList("reviewList", Review.class, QReview.class, PathInits.DIRECT2);
+
+    public final EnumPath<umm.spring.study.domain.enums.Role> role = createEnum("role", umm.spring.study.domain.enums.Role.class);
 
     public final EnumPath<umm.spring.study.domain.enums.SocialType> socialType = createEnum("socialType", umm.spring.study.domain.enums.SocialType.class);
 

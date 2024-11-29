@@ -4,5 +4,5 @@ import umm.spring.study.domain.Review;
 import umm.spring.study.web.dto.ReviewRequestDTO;
 
 public interface ReviewCommandService {
-    Review addReview(ReviewRequestDTO.AddDTO request);
+    Review addReview(ReviewRequestDTO.AddReviewDTO request);
 }

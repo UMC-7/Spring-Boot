@@ -25,7 +25,7 @@ public class ReviewCommandServiceImpl implements ReviewCommandService {
 
     @Override
     @Transactional
-    public Review addReview(ReviewRequestDTO.AddDTO request){
+    public Review addReview(ReviewRequestDTO.AddReviewDTO request){
         Store store = storeRepository.findById(request.getStoreId())
                 .orElseThrow(() -> new RuntimeException("Store not found"));
 

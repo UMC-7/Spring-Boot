@@ -55,6 +55,17 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-data-rest:1.6.9'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // 소셜 로그인 관련 디펜던시
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    testImplementation 'org.springframework.security:spring-security-test'
+
+    // Thymeleaf 의존성
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
+
+    // Spring Security OAuth2 클라이언트 의존성 추가
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 }
 
 sourceSets {

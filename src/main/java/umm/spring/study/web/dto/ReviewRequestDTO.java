@@ -10,7 +10,7 @@ import umm.spring.study.domain.Store;
 
 public class ReviewRequestDTO {
     @Getter
-    public static class AddDTO{
+    public static class AddReviewDTO{
 
         private String body;
 

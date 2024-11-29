@@ -9,7 +9,7 @@ import umm.spring.study.web.dto.ReviewResponseDTO;
 import java.util.Optional;
 
 public class ReviewConverter {
-    public static Review toReview(ReviewRequestDTO.AddDTO request, Store store, Member member){
+    public static Review toReview(ReviewRequestDTO.AddReviewDTO request, Store store, Member member){
         return Review.builder()
                 .title(request.getTitle())
                 .body((request.getBody()))

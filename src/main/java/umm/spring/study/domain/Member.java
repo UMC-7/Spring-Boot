@@ -2,9 +2,13 @@ package umm.spring.study.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umm.spring.study.domain.common.BaseEntity;
 import umm.spring.study.domain.enums.Gender;
 import umm.spring.study.domain.enums.MemberStatus;
+import umm.spring.study.domain.enums.Role;
 import umm.spring.study.domain.enums.SocialType;
 import umm.spring.study.domain.mapping.MemberAgree;
 import umm.spring.study.domain.mapping.MemberMission;
@@ -16,6 +20,8 @@ import java.util.List;
 
 @Entity
 @Getter
+@DynamicUpdate
+@DynamicInsert
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -28,9 +34,6 @@ public class Member extends BaseEntity {
     @Column(nullable = false, length = 20)
     private String name;
 
-    @Column(nullable = false)
-    private Integer age;
-
     @Column(nullable = false, length = 40)
     private String address;
 
@@ -42,7 +45,6 @@ public class Member extends BaseEntity {
     private Gender gender;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(10)")
     private SocialType socialType;
 
     @Enumerated(EnumType.STRING)
@@ -51,10 +53,23 @@ public class Member extends BaseEntity {
 
     private LocalDate inactiveDate;
 
-    @Column(nullable = false, length = 50, columnDefinition = "VARCHAR(50")
+//    //    @Column(nullable = false, length = 50)
+//    private String email;
+
+    @ColumnDefault("0")
+    private Integer point;
+
+    @Column(columnDefinition = "INT DEFAULT 0")
+    private Integer age = 0;
+
+    @Column(nullable = false, unique = true)
     private String email;
 
-    private Integer point;
+    @Column(nullable = false)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<MemberAgree> memberAgreeList = new ArrayList<>();
@@ -67,4 +82,8 @@ public class Member extends BaseEntity {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<MemberMission> memberMissionList = new ArrayList<>();
+
+    public void encodePassword(String password) {
+        this.password = password;
+    }
 }

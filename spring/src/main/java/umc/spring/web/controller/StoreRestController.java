@@ -12,8 +12,10 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import umc.spring.apiPayload.ApiResponse;
 import umc.spring.config.conventer.StoreConverter;
+import umc.spring.domain.common.Mission;
 import umc.spring.domain.common.Rating;
 import umc.spring.service.StoreService.StoreQueryService;
+import umc.spring.validation.annotation.CheckPage;
 import umc.spring.validation.annotation.ExistStore;
 import umc.spring.web.dto.StoreResponseDTO;
 
@@ -36,8 +38,14 @@ public class StoreRestController {
     @Parameters({
             @Parameter(name = "storeId", description = "가게의 아이디, path variable 입니다!")
     })
-    public ApiResponse<StoreResponseDTO.ReviewPreViewListDTO> getReviewList(@ExistStore @PathVariable(name = "storeId") Long storeId, @RequestParam(name = "page") Integer page){
+    public ApiResponse<StoreResponseDTO.ReviewPreViewListDTO> getReviewList(@ExistStore @PathVariable(name = "storeId") Long storeId, @CheckPage @RequestParam(name = "page") Integer page){
         Page<Rating> ratingList = storeQueryService.getRatingList(storeId, page);
         return ApiResponse.onSuccess(StoreConverter.reviewPreViewListDTO(ratingList));
+    }
+
+    @GetMapping("/{storeId}/missions")
+    public ApiResponse<StoreResponseDTO.MissionPreviewListDTO> getMissionList(@ExistStore @PathVariable(name = "storeId") Long storeId, @CheckPage @RequestParam(name = "page") Integer page) {
+        Page<Mission> missionList = storeQueryService.getMissionList(storeId, page);
+        return ApiResponse.onSuccess(StoreConverter.missionPreviewListDTO(missionList));
     }
 }

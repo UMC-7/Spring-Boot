@@ -34,6 +34,8 @@ public class QStore extends EntityPathBase<Store> {
 
     public final ListPath<Question, QQuestion> questionList = this.<Question, QQuestion>createList("questionList", Question.class, QQuestion.class, PathInits.DIRECT2);
 
+    public final ListPath<Rating, QRating> ratingList = this.<Rating, QRating>createList("ratingList", Rating.class, QRating.class, PathInits.DIRECT2);
+
     public final StringPath storeName = createString("storeName");
 
     public final StringPath storeType = createString("storeType");

@@ -7,13 +7,9 @@ import umc.spring.config.conventer.RatingConverter;
 import umc.spring.domain.common.Member;
 import umc.spring.domain.common.Rating;
 import umc.spring.domain.common.Store;
-import umc.spring.repository.StoreRepository.StoreRepository;
-import umc.spring.repository.memberRepository.MemberRepository;
-import umc.spring.repository.missionRepository.MissionRepository;
-import umc.spring.repository.ratingRepository.RatingRepository;
 import umc.spring.service.MemberService.MemberComandService;
 import umc.spring.service.StoreService.StoreQueryService;
-import umc.spring.web.dto.RatingDTO;
+import umc.spring.web.dto.RatingRequestDTO;
 
 import java.util.Optional;
 
@@ -26,7 +22,7 @@ public class RatingServiceImpl implements RatingService{
 
     @Override
     @Transactional
-    public Rating createRating(RatingDTO.CreateRating request) {
+    public Rating createRating(RatingRequestDTO.CreateRating request) {
 
         Rating newRating = RatingConverter.toRating(request);
 

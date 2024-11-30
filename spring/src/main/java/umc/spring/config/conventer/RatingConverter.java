@@ -1,13 +1,8 @@
 package umc.spring.config.conventer;
 
 import lombok.RequiredArgsConstructor;
-import umc.spring.domain.common.Mission;
 import umc.spring.domain.common.Rating;
-import umc.spring.repository.StoreRepository.StoreRepository;
-import umc.spring.repository.memberRepository.MemberRepository;
-import umc.spring.repository.missionRepository.MissionRepository;
-import umc.spring.service.RatingService.RatingService;
-import umc.spring.web.dto.RatingDTO;
+import umc.spring.web.dto.RatingRequestDTO;
 import umc.spring.web.dto.RatingResponseDTO;
 
 import java.time.LocalDateTime;
@@ -22,7 +17,7 @@ public class RatingConverter {
                 .build();
     }
 
-    public static Rating toRating(RatingDTO.CreateRating request) {
+    public static Rating toRating(RatingRequestDTO.CreateRating request) {
 
         return Rating.builder()
                 .rate(request.getRate())

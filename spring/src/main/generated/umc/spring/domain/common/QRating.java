@@ -31,8 +31,6 @@ public class QRating extends EntityPathBase<Rating> {
 
     public final QMember member;
 
-    public final QMission mission;
-
     public final NumberPath<Integer> rate = createNumber("rate", Integer.class);
 
     public final StringPath ratingContent = createString("ratingContent");
@@ -61,7 +59,6 @@ public class QRating extends EntityPathBase<Rating> {
     public QRating(Class<? extends Rating> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.member = inits.isInitialized("member") ? new QMember(forProperty("member")) : null;
-        this.mission = inits.isInitialized("mission") ? new QMission(forProperty("mission"), inits.get("mission")) : null;
         this.store = inits.isInitialized("store") ? new QStore(forProperty("store")) : null;
     }
 

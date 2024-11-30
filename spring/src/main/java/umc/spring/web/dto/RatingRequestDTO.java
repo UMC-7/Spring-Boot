@@ -7,7 +7,7 @@ import lombok.Getter;
 import umc.spring.validation.annotation.ExistMember;
 import umc.spring.validation.annotation.ExistStore;
 
-public class RatingDTO {
+public class RatingRequestDTO {
 
     @Getter
     public static class CreateRating {

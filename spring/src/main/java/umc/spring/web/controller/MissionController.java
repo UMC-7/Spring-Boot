@@ -10,9 +10,11 @@ import umc.spring.domain.common.Mission;
 import umc.spring.domain.mapping.MemberMission;
 import umc.spring.service.MissionService.MissionService;
 import umc.spring.service.MissionService.MissionServiceImpl;
+import umc.spring.validation.annotation.ExistStore;
 import umc.spring.web.dto.MemberMissionResponseDTO;
 import umc.spring.web.dto.MissionDTO;
 import umc.spring.web.dto.MissionResponseDTO;
+import umc.spring.web.dto.StoreResponseDTO;
 
 @RestController
 @RequestMapping("/mission")
@@ -31,5 +33,10 @@ public class MissionController {
     public ApiResponse<MemberMissionResponseDTO.JoinResultDTO> addTryingMission(@RequestBody @Valid MissionDTO.AddTryDTO request) {
         MemberMission memberMission = missionService.addTryingMission(request);
         return ApiResponse.onSuccess(MemberMissionConverter.toJoinResultDTO(memberMission));
+    }
+
+    @GetMapping("/{storeId}/reviews")
+    public ApiResponse<StoreResponseDTO.ReviewPreViewDTO> getReviewList(@ExistStore @PathVariable(name = "storeId") Long storeId) {
+        return null;
     }
 }

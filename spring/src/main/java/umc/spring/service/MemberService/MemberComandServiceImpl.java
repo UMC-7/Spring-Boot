@@ -1,6 +1,8 @@
 package umc.spring.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import umc.spring.apiPayload.code.status.ErrorStatus;
@@ -9,10 +11,13 @@ import umc.spring.config.conventer.MemberPreferConverter;
 import umc.spring.conventer.MemberConverter;
 import umc.spring.domain.common.FoodCategory;
 import umc.spring.domain.common.Member;
+import umc.spring.domain.common.Rating;
 import umc.spring.domain.mapping.MemberPrefer;
 import umc.spring.repository.foodCategoryRepository.FoodCategoryRepository;
 import umc.spring.repository.memberRepository.MemberRepository;
+import umc.spring.repository.ratingRepository.RatingRepository;
 import umc.spring.web.dto.MemberRequestDTO;
+import umc.spring.web.dto.RatingResponseDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,12 +29,21 @@ import java.util.stream.Collectors;
 public class MemberComandServiceImpl implements MemberComandService{
 
     private final MemberRepository memberRepository;
-
+    private final RatingRepository ratingRepository;
     private final FoodCategoryRepository foodCategoryRepository;
 
     @Override
     public Optional<Member> findById(Long id) {
         return memberRepository.findById(id);
+    }
+
+    @Override
+    public Page<Rating> getRatingList(Long memberId, Integer page) {
+
+        Member member = memberRepository.findById(memberId).get();
+        Page<Rating> allByMember = ratingRepository.findAllByMember(member, PageRequest.of(page, 10));
+
+        return allByMember;
     }
 
     @Override

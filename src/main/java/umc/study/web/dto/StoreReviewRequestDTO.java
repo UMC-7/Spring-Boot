@@ -20,5 +20,8 @@ public class StoreReviewRequestDTO {
 
         @NotBlank
         String content;
+
+
+        Long memberId;
     }
 }

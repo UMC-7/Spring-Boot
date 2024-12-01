@@ -4,41 +4,29 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import umc.study.domain.enums.MissionStatus;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
-public class StoreResponseDTO {
+public class ProgressMissionResponseDTO {
 
     @Builder
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class AddStoreResultDTO {
-        Long storeId;
-        String storeName;
-        String regionName;
-        Float storeScore;
-    }
-
-    @Builder
-    @Getter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class StoreMissionDTO {
+    public static class GetProgressMissionDTO {
         Long missionId;
         Integer reward;
         String missionSpec;
-        LocalDate deadline;
+        String status;
     }
 
     @Builder
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class StoreMissionListDTO {
-        List<StoreMissionDTO> missions;
+    public static class GetProgressMissionListDTO {
+        List<GetProgressMissionDTO> missions;
         Integer totalPages;
         Long totalElements;
         Boolean isLast;

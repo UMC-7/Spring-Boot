@@ -23,4 +23,7 @@ public class StoreConverter {
                 .storeScore(store.getScore())
                 .build();
     }
+
+
+
 }

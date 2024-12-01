@@ -2,6 +2,7 @@ package umc.spring.domain.common;
 
 import jakarta.persistence.*;
 import lombok.*;
+import umc.spring.domain.enums.StoreOperationState;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class Store {
 
     @Column(length = 10)
     @Enumerated(EnumType.STRING)
-    private String operationState;
+    private StoreOperationState operationState;
 
     private LocalTime operationTime;
 

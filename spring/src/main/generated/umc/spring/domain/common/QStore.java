@@ -28,7 +28,7 @@ public class QStore extends EntityPathBase<Store> {
 
     public final ListPath<Mission, QMission> missionList = this.<Mission, QMission>createList("missionList", Mission.class, QMission.class, PathInits.DIRECT2);
 
-    public final StringPath operationState = createString("operationState");
+    public final EnumPath<umc.spring.domain.enums.StoreOperationState> operationState = createEnum("operationState", umc.spring.domain.enums.StoreOperationState.class);
 
     public final TimePath<java.time.LocalTime> operationTime = createTime("operationTime", java.time.LocalTime.class);
 

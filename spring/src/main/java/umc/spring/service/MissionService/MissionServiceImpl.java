@@ -24,7 +24,6 @@ public class MissionServiceImpl implements MissionService {
 
     private final MemberComandService memberComandService;
     private final StoreQueryService storeQueryService;
-    private final MissionService missionService;
     private final MissionRepository missionRepository;
 
     @Override
@@ -48,7 +47,7 @@ public class MissionServiceImpl implements MissionService {
         MemberMission newMemberMission = MemberMissionConverter.toMemberMission(request);
 
         Optional<Member> targetMember = memberComandService.findById(request.getMemberId());
-        Optional<Mission> targetMission = missionService.findById(request.getMissionId());
+        Optional<Mission> targetMission = findById(request.getMissionId());
 
         Mission missionValue = targetMission.orElseThrow(() -> new IllegalArgumentException("Mission이 존재하지 않습니다"));
         Member MemberValue = targetMember.orElseThrow(() -> new IllegalArgumentException("Member 값이 존재하지 않습니다"));

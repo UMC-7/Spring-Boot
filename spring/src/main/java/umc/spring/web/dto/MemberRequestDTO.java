@@ -2,8 +2,6 @@ package umc.spring.web.dto;
 
 import lombok.Getter;
 import umc.spring.validation.annotation.ExistCategories;
-
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 public class MemberRequestDTO {

@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import umc.spring.apiPayload.ApiResponse;
 import umc.spring.config.conventer.MemberConverter;
 import umc.spring.domain.common.Member;
+import umc.spring.domain.common.Mission;
 import umc.spring.domain.common.Rating;
+import umc.spring.domain.mapping.MemberMission;
 import umc.spring.service.MemberService.MemberComandService;
 import umc.spring.validation.annotation.CheckPage;
 import umc.spring.web.dto.MemberRequestDTO;
@@ -50,5 +52,21 @@ public class MemberRestController {
     public ApiResponse<MemberResponseDTO.myRatingListResultDTO> getMyRatingListDTO(@PathVariable(name = "memberId") Long memberId, @CheckPage @RequestParam("page") Integer page) {
         Page<Rating> ratingList = memberComandService.getRatingList(memberId, page);
         return ApiResponse.onSuccess(MemberConverter.toMyRatingListResultDTO(ratingList));
+    }
+
+    @GetMapping("/{memberId}/memberMission/tring")
+    @Operation(summary = "특정 맴버의 도전 중인 미션 목록 조회 API", description = "특정 맴버의 도전 중인 미션 목록을 조회합니다. paging 포함")
+    @ApiResponses({
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "COMMON200",description = "OK, 성공"),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH003", description = "access 토큰을 주세요!",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH004", description = "acess 토큰 만료",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(responseCode = "AUTH006", description = "acess 토큰 모양이 이상함",content = @Content(schema = @Schema(implementation = ApiResponse.class))),
+    })
+    @Parameters({
+            @Parameter(name = "memberId", description = "member 아이디, path variable 입니다!")
+    })
+    public ApiResponse<MemberResponseDTO.tryingMemberMissionListDTO> getTryingMemberMissionListDTO(@PathVariable(name = "memberId") Long memberId, @CheckPage @RequestParam("page") Integer page) {
+        Page<MemberMission> tryingMissionList = memberComandService.getTryingMissionMissionList(memberId, page);
+        return ApiResponse.onSuccess(MemberConverter.toMemberMissionListDTO(tryingMissionList));
     }
 }

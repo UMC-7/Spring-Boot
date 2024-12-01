@@ -2,7 +2,9 @@ package umc.spring.service.MemberService;
 
 import org.springframework.data.domain.Page;
 import umc.spring.domain.common.Member;
+import umc.spring.domain.common.Mission;
 import umc.spring.domain.common.Rating;
+import umc.spring.domain.mapping.MemberMission;
 import umc.spring.web.dto.MemberRequestDTO;
 
 import java.util.Optional;
@@ -14,4 +16,6 @@ public interface MemberComandService {
     Optional<Member> findById(Long id);
 
     Page<Rating> getRatingList(Long memberId, Integer page);
+
+    Page<MemberMission> getTryingMissionMissionList(Long memberId, Integer page);
 }

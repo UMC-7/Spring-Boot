@@ -3,6 +3,7 @@ package umc.spring.config.conventer;
 import org.springframework.data.domain.Page;
 import umc.spring.domain.common.Member;
 import umc.spring.domain.common.Rating;
+import umc.spring.domain.mapping.MemberMission;
 import umc.spring.web.dto.MemberResponseDTO;
 
 import java.time.LocalDateTime;
@@ -31,8 +32,6 @@ public class MemberConverter {
                 .listSize(ratingList.getSize())
                 .ratingList(ratingResultDTOS)
                 .build();
-
-
     }
 
     public static MemberResponseDTO.myRatingResultDTO toRatingResultDTO(Rating rating) {
@@ -43,5 +42,29 @@ public class MemberConverter {
                 .body(rating.getRatingContent())
                 .build();
 
+    }
+
+    public static MemberResponseDTO.tryingMemberMissionListDTO toMemberMissionListDTO(Page<MemberMission> memberMissions) {
+
+        List<MemberResponseDTO.tryingMemberMissionDTO> collect = memberMissions.stream()
+                .map(MemberConverter::tryingMemberMissionDTO).collect(Collectors.toList());
+
+        return MemberResponseDTO.tryingMemberMissionListDTO.builder()
+                .isFirst(memberMissions.isFirst())
+                .isLast(memberMissions.isLast())
+                .totalPage(memberMissions.getTotalPages())
+                .totalElements(memberMissions.getTotalElements())
+                .listSize(memberMissions.getSize())
+                .tryingMissionDTOList(collect)
+                .build();
+    }
+
+    public static MemberResponseDTO.tryingMemberMissionDTO tryingMemberMissionDTO(MemberMission memberMission) {
+        return MemberResponseDTO.tryingMemberMissionDTO.builder()
+                .missionName(memberMission.getMission().getMissionName())
+                .content(memberMission.getMission().getMissionCertificationNumber())
+                .status(memberMission.getStatus().name())
+                .point(memberMission.getMission().getGotPoint())
+                .build();
     }
 }

@@ -21,13 +21,15 @@ public class CheckPageValidator implements ConstraintValidator<CheckPage, List<L
     @Override
     public boolean isValid(List<Long> value, ConstraintValidatorContext context) {
 
+        //들어오는 수는 1 이상이어야 한다.
         boolean bool = value.stream()
-                .anyMatch(v -> v < 0);
+                .anyMatch(v -> v < 1);
 
         if (bool) {
             context.disableDefaultConstraintViolation();
             context.buildConstraintViolationWithTemplate(ErrorStatus.PAGE_NUMBER_ERROR.toString()).addConstraintViolation();
         } else {
+            //첫 페이지는 0부터 시작한다.
             value.stream().map(v -> v - 1).toList();
         }
         return false;

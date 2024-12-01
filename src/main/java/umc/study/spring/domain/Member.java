@@ -16,6 +16,8 @@ import umc.study.spring.domain.mapping.MemberPrefer;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 @Getter

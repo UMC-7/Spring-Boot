@@ -1,37 +1,43 @@
 package umc.study.spring.repository.StoreRepository;
 
-import com.querydsl.core.BooleanBuilder;
-import com.querydsl.jpa.impl.JPAQueryFactory;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import umc.study.spring.domain.QStore;
 import umc.study.spring.domain.Store;
 
+import java.util.ArrayList;
 import java.util.List;
-
 
 @Repository
 @RequiredArgsConstructor
-public class StoreRepositoryImpl implements StoreRepositoryCustom{
-    private final JPAQueryFactory jpaQueryFactory;
-    private final QStore store = QStore.store;
+public class StoreRepositoryImpl implements StoreRepositoryCustom {
+
+    @PersistenceContext
+    private final EntityManager entityManager;
 
     @Override
-    public List<Store> dynamicQueryWithBooleanBuilder(String name,Float score){
-        BooleanBuilder predicate = new BooleanBuilder();
+    public List<Store> dynamicQueryWithBooleanBuilder(String name, Float score) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Store> query = cb.createQuery(Store.class);
+        Root<Store> store = query.from(Store.class);
 
-        if(name!=null){
-            predicate.and(store.name.eq(name));
+        List<Predicate> predicates = new ArrayList<>();
+
+        if (name != null) {
+            predicates.add(cb.equal(store.get("name"), name));
         }
 
-        if(score!=null){
-            predicate.and(store.score.goe(4.0f));
+        if (score != null) {
+            predicates.add(cb.greaterThanOrEqualTo(store.get("score"), score));
         }
 
-        return jpaQueryFactory
-                .selectFrom(store)
-                .where(predicate)
-                .fetch();
+        query.where(predicates.toArray(new Predicate[0]));
+
+        return entityManager.createQuery(query).getResultList();
     }
-
 }

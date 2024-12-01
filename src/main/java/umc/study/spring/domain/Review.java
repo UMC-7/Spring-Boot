@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import umc.study.spring.domain.common.BaseEntity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 @Entity
 @Getter
 @Builder

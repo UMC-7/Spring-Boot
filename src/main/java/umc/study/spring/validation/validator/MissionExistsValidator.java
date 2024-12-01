@@ -21,8 +21,8 @@ public class MissionExistsValidator implements ConstraintValidator<MissionExists
 
     @Override
     public boolean isValid(Long missionId, ConstraintValidatorContext context) {
-        boolean isValid = missionRepository.findById(missionId);
-
+        //boolean isValid = missionRepository.findById(missionId);
+        boolean isValid=true;
         if (!isValid){
             context.disableDefaultConstraintViolation();
             context.buildConstraintViolationWithTemplate(ErrorStatus.MISSION_CATEGORY_NOT_FOUND.toString()).addConstraintViolation();

@@ -1,24 +1,22 @@
 package umc.study.spring.repository.RegionRepository;
 
-import com.querydsl.jpa.impl.JPAQueryFactory;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import umc.study.spring.domain.QRegion;
 import umc.study.spring.domain.Region;
-
-import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
-public class RegionRepositoryImpl implements RegionRepositoryCustom{
-    private final JPAQueryFactory jpaQueryFactory;
-    private final QRegion region = QRegion.region;
+public class RegionRepositoryImpl implements RegionRepositoryCustom {
+    @PersistenceContext
+    private final EntityManager entityManager;
 
     @Override
     public Region findByName(String name) {
-        return jpaQueryFactory
-                .selectFrom(region)
-                .where(region.name.eq(name))
-                .fetchOne();
+        String jpql = "SELECT r FROM Region r WHERE r.name = :name";
+        return entityManager.createQuery(jpql, Region.class)
+                .setParameter("name", name)
+                .getSingleResult();
     }
 }

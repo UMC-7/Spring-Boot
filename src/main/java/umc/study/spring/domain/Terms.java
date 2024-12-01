@@ -8,6 +8,9 @@ import umc.study.spring.domain.mapping.MemberAgree;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 @Entity
 @Getter
 @Builder

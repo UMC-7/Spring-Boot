@@ -4,9 +4,11 @@ import umc.spring.study.domain.common.BaseEntity;
 import umc.spring.study.domain.enums.Gender;
 import umc.spring.study.domain.enums.MemberStatus;
 import umc.spring.study.domain.enums.SocialType;
+import umc.spring.study.domain.enums.Role;
 import umc.spring.study.domain.mapping.MemberFood;
 import umc.spring.study.domain.mapping.MemberMission;
 import umc.spring.study.domain.mapping.MemberTerm;
+
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
@@ -39,6 +41,15 @@ public class Member extends BaseEntity {
     @Column(nullable = false, length = 40)
     private String specAddress;
 
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(10)")
     private Gender gender;
@@ -51,8 +62,6 @@ public class Member extends BaseEntity {
     private MemberStatus status;
 
     private LocalDate inactiveDate;
-
-    private String email;
 
     @ColumnDefault("0")
     private Integer point;
@@ -68,4 +77,8 @@ public class Member extends BaseEntity {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private final List<MemberMission> memberMissionList = new ArrayList<>();
+
+    public void encodePassword(String password) {
+        this.password = password;
+    }
 }

@@ -24,5 +24,4 @@ public class ReviewConverter {
                 score(request.getScore()).
                 build();
     }
-
 }

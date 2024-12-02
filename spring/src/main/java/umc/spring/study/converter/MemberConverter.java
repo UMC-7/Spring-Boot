@@ -38,11 +38,14 @@ public class MemberConverter {
         }
 
         return Member.builder()
+                .name(request.getName())
+                .email(request.getEmail())
+                .password(request.getPassword())
                 .address(request.getAddress())
                 .specAddress(request.getSpecAddress())
                 .gender(gender)
-                .name(request.getName())
                 .memberFoodList(new ArrayList<>())
+                .role(request.getRole())
                 .build();
     }
 }

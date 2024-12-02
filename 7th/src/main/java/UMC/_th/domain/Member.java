@@ -4,6 +4,7 @@ import UMC._th.domain.common.BaseEntity;
 import UMC._th.domain.enums.Agreement;
 import UMC._th.domain.enums.Gender;
 import UMC._th.domain.enums.MemberStatus;
+import UMC._th.domain.enums.Role;
 import UMC._th.domain.mapping.Home;
 import UMC._th.domain.mapping.MemberPrefer;
 import jakarta.persistence.*;
@@ -35,6 +36,15 @@ public class Member extends BaseEntity {
 
     private String address;
 
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
     @Enumerated(EnumType.STRING)
     @ColumnDefault("'AGREE'")
     private Agreement agreement;
@@ -51,4 +61,8 @@ public class Member extends BaseEntity {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private ArrayList<Review> reviews = new ArrayList<>();
+
+    public void encodePassword(String password){
+        this.password=password;
+    }
 }

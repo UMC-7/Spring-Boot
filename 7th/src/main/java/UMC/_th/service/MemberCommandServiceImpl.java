@@ -12,6 +12,7 @@ import UMC._th.repository.FoodPreferRepository;
 import UMC._th.repository.MemberRepository;
 import UMC._th.web.dto.MemberRequestDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,11 +27,14 @@ public class MemberCommandServiceImpl implements MemberCommandService{
 
     private final FoodPreferRepository foodPreferRepository;
 
+    private final PasswordEncoder passwordEncoder;
+
     @Override
     @Transactional
     public Member joinMember(MemberRequestDTO.JoinDTO request) {
 
         Member newMember = MemberConverter.toMember(request);
+        newMember.encodePassword(passwordEncoder.encode(request.getPassword()));
         List<FoodPrefer> foodPrefers = request.getPreferCategory().stream()
                 .map(category -> {
                     return foodPreferRepository.findById(category).orElseThrow(()-> new FoodPreferHandler(ErrorStatus.FOOD_CATEGORY_NOT_FOUND));

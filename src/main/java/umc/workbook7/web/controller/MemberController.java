@@ -21,7 +21,6 @@ import umc.workbook7.service.MemberService.MemberQueryService;
 public class MemberController {
 
     private final MemberCommandService memberCommandService;
-    //private final MemberQueryService memberQueryService;
 
     @PostMapping("/")
     public ApiResponse<MemberResponseDTO.JoinResultDTO>
@@ -29,5 +28,6 @@ public class MemberController {
         Member member = memberCommandService.joinMember(request);
         return ApiResponse.onSuccess(SuccessStatus.Member_OK, MemberConverter.toJoinResultDTO(member));
     }
+
 
 }

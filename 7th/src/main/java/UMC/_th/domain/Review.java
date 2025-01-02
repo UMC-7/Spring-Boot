@@ -18,7 +18,7 @@ public class Review extends BaseEntity {
     private String title;
 
     @Column(nullable = false)
-    private Integer starPoint;
+    private Float starPoint;
 
     @Column(length = 256)
     private String description;
